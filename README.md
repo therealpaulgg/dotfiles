@@ -2,6 +2,7 @@
 
 These are my dotfiles for my i3-gaps configuration.
 
+__Wallpaper__: [Moon Rays](https://imgur.com/a/jWSX7kq)  
 __Color Scheme__: Dracula.  
 __GTK Theme__: [Ant-Dracula](https://github.com/EliverLara/Ant-Dracula)  
 __Icon Theme__: [Numix Circle Arc Icons](https://aur.archlinux.org/packages/numix-circle-arc-icons-git/)  
