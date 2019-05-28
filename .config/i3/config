@@ -30,7 +30,7 @@ font pango:Noto Sans Display 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -87,21 +87,34 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-# browser workspace
-set $ws1 ""
-# coding workspace
-set $ws2 ""
-# gaming workspace
-set $ws3 ""
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# browser workspace
+#set $ws1 " "
+# terminal workspace
+#set $ws2 " "
+# development workspace
+#set $ws3 " "
+# gaming workspace
+#set $ws4 " "
+#set $ws5 "5 "
+#set $ws6 "6 "
+#set $ws7 "7 "
+# mail workspace
+#set $ws8 " "
 # chat workspace
-set $ws9 ""
+#set $ws9 " "
 # music workspace
-set $ws10 ""
+#set $ws10 " "
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -202,9 +215,10 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # wallpaper
-#exec_always --no-startup-id feh --bg-scale /home/therealpaulgg/Pictures/XCTVIhr4EElXe3kgRt3cKiNlfHpS5xEUqEChHRoSjTI.jpg
+exec_always --no-startup-id feh --bg-scale /home/therealpaulgg/Pictures/moon-rays-red-space-sky-abstract-mountains-4c.jpg
+#exec_always --no-startup-id feh --bg-scale /home/therealpaulgg/Pictures/snowy-mountains-4096x2733-landscape-moena-italy-4k-12517.jpg
 #exec_always --no-startup-id feh --bg-scale /home/therealpaulgg/Pictures/forest_trees_fog_110131_3840x2160.jpg
-exec_always --no-startup-id feh --bg-scale /home/therealpaulgg/Pictures/121472.jpg
+#exec_always --no-startup-id feh --bg-scale /home/therealpaulgg/Pictures/121472.jpg
 
 # controls
 
@@ -218,11 +232,18 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# screenshot
+bindsym $mod+shift+s exec xfce4-screenshooter -r
+
 # i3gaps stuff
 
 # disable window titlebars
 for_window [class=".*"] border pixel 0
 gaps inner 20
+gaps outer 10
+
+# gnome crap
+exec --no-startup-id /usr/lib/gsd-xsettings
 
 # compositor
 exec compton
@@ -233,12 +254,21 @@ exec --no-startup-id chromium
 exec --no-startup-id steam
 exec --no-startup-id telegram-desktop
 exec --no-startup-id discord
+exec --no-startup-id slack
+exec --no-startup-id pcloud
+exec --no-startup-id mailspring
+exec --no-startup-id kitty
+exec --no-startup-id code
 
 # default workspaces
 assign [class="Chromium"] $ws1
-assign [class="Steam"] $ws3
+assign [class="kitty"] $ws2
+assign [class="Code"] $ws3
+assign [class="Steam"] $ws4
 assign [class="discord"] $ws9
 assign [class="Telegram"] $ws9
+assign [class="Slack"] $ws9
+assign [class="Mailspring"] $ws8
 for_window [class="Spotify"] move to workspace $ws10
 
 # i guess putting workspaces on different monitors
@@ -246,8 +276,10 @@ workspace $ws1 output DP-4
 workspace $ws2 output DP-2
 
 # lockscreen shortcut
-bindsym $mod+ctrl+l exec /usr/local/bin/unixporni3lock
+bindsym $mod+ctrl+l exec /usr/bin/betterlockscreen --text "Hello There" -l 
+
+# something with lock on system events
+exec --no-startup-id xss-lock -- /usr/bin/betterlockscreen --text "Hello There" -l
 
 # launch polybar
 exec /home/therealpaulgg/.config/polybar/launch.sE
-
